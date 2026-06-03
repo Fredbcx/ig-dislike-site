@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Dislike Button for IG</title>
+  <meta name="description" content="Privacy Policy for the Dislike Button for IG Chrome extension.">
+  <style>
+    /* ── Tokens ──────────────────────────────────────────────────────────── */
+    :root {
+      --pink:       #e0315a;
+      --pink-h:     #c4294e;
+      --pink-light: #ff6b8a;
+      --pink-pale:  #fff0f4;
+      --pink-pale2: #ffe3ec;
+      --text:       #111827;
+      --text-2:     #6b7280;
+      --border:     #f0dde4;
+      --white:      #ffffff;
+      --radius:     14px;
+      --max:        760px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+              Helvetica, Arial, sans-serif;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+    a { color: var(--pink); }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Header ──────────────────────────────────────────────────────────── */
+    header {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand img { width: 28px; height: 28px; border-radius: 6px; }
+    .nav-brand .dot { color: var(--pink); }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 11px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(224,49,90,.30);
+      transition: background .15s, transform .15s;
+      white-space: nowrap;
+    }
+    .btn-cta:hover {
+      background: var(--pink-h);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    /* ── Hero banner ─────────────────────────────────────────────────────── */
+    .page-hero {
+      background: linear-gradient(150deg, var(--pink-pale) 0%, var(--white) 60%);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .page-hero p {
+      color: var(--text-2);
+      font-size: 15px;
+    }
+
+    /* ── Document body ───────────────────────────────────────────────────── */
+    .doc {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .doc h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 44px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--pink-pale2);
+    }
+    .doc h2:first-child { margin-top: 0; }
+
+    .doc h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+
+    .doc p { margin-bottom: 14px; color: var(--text); }
+
+    .doc ul, .doc ol {
+      margin: 10px 0 16px 24px;
+    }
+    .doc li { margin-bottom: 8px; }
+
+    .doc strong { font-weight: 700; }
+
+    .highlight-box {
+      background: var(--pink-pale);
+      border-left: 4px solid var(--pink);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+
+    .toc {
+      background: var(--pink-pale);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      padding: 0;
+      border: none;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .toc ol {
+      margin: 0 0 0 20px;
+    }
+    .toc li { margin-bottom: 6px; font-size: 15px; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: #a0aec0;
+      padding: 40px 0;
+      font-size: 14px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 15px;
+    }
+    .footer-brand img { width: 24px; height: 24px; border-radius: 5px; opacity: .9; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: #a0aec0; transition: color .15s; text-decoration: none; }
+    .footer-links a:hover { color: var(--pink-light); }
+    .footer-disclaimer {
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid #2d3748;
+      padding-top: 20px;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────────────────────── -->
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png" alt="Dislike Button for IG logo" width="64" height="64">
+      Dislike Button <span class="dot">for IG</span>
+    </a>
+    <a href="CHROME_STORE_URL" class="btn-cta" target="_blank" rel="noopener">
+      ➕ Add to Chrome
+    </a>
+  </nav>
+</header>
+
+<!-- ── Page hero ────────────────────────────────────────────────────────────── -->
+<div class="page-hero">
+  <h1>Privacy Policy</h1>
+  <p>Last updated: June 3, 2026</p>
+</div>
+
+<!-- ── Document ─────────────────────────────────────────────────────────────── -->
+<main class="doc">
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#what-we-collect">Information We Collect</a></li>
+      <li><a href="#what-we-dont">Information We Do NOT Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Information</a></li>
+      <li><a href="#storage">Data Storage &amp; Security</a></li>
+      <li><a href="#your-rights">Your Rights &amp; Choices</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <h2 id="overview">1. Overview</h2>
+  <p>
+    <strong>Dislike Button for IG</strong> ("the Extension," "we," "us," or "our")
+    is a Chrome browser extension that adds an anonymous, aggregate dislike counter
+    to Instagram posts. This Privacy Policy explains what information the Extension
+    collects, how it is used, and what rights you have over your data.
+  </p>
+  <div class="highlight-box">
+    <strong>Short version:</strong> We collect only the minimum data necessary to
+    count dislikes and prevent abuse. No personal information is ever collected,
+    and you can permanently delete all your data at any time with one click.
+  </div>
+  <p>
+    By installing and using the Extension you agree to the practices described in
+    this policy. If you do not agree, please uninstall the Extension.
+  </p>
+
+  <!-- 2 -->
+  <h2 id="what-we-collect">2. Information We Collect</h2>
+
+  <h3>2.1 Anonymous User Token (UUID)</h3>
+  <p>
+    When you first install the Extension, a random UUID (universally unique
+    identifier) is generated locally in your browser and stored in
+    <code>chrome.storage.sync</code>. This UUID:
+  </p>
+  <ul>
+    <li>Is randomly generated and contains no personal information.</li>
+    <li>Is used solely to identify a unique voter and prevent duplicate votes on the same post.</li>
+    <li>Is synced across your Chrome installations via your Google account's sync service
+        (Google's own privacy policy governs this syncing).</li>
+    <li>Is never transmitted to us except as part of a vote request.</li>
+  </ul>
+
+  <h3>2.2 Instagram Post Codes</h3>
+  <p>
+    When you click the dislike button on a post, we record the short post code
+    extracted from the post URL (e.g., <code>ABC123</code> from
+    <code>instagram.com/p/ABC123/</code>). We store:
+  </p>
+  <ul>
+    <li>The post code (a public identifier visible in the Instagram URL).</li>
+    <li>Your anonymous UUID (see §2.1).</li>
+    <li>A timestamp of the vote.</li>
+    <li>A hashed version of your IP address (see §2.3).</li>
+  </ul>
+  <p>
+    We do <strong>not</strong> store the full Instagram URL or any metadata
+    about the post (captions, usernames, media content, etc.).
+  </p>
+
+  <h3>2.3 IP Address — Hashed Only</h3>
+  <p>
+    To protect against vote manipulation and spam, we apply a SHA-256 cryptographic
+    hash to your IP address before it reaches our database. This means:
+  </p>
+  <ul>
+    <li>Your actual IP address is <strong>never stored</strong> in plain text.</li>
+    <li>The hashed value cannot be reversed to obtain your original IP address.</li>
+    <li>The hash is used only for rate-limiting purposes (preventing more than
+        60 votes per hour per user).</li>
+    <li>The hash is <strong>not</strong> linked to your UUID or used to identify you
+        across sessions.</li>
+  </ul>
+
+  <!-- 3 -->
+  <h2 id="what-we-dont">3. Information We Do NOT Collect</h2>
+  <p>We explicitly do <strong>not</strong> collect:</p>
+  <ul>
+    <li>Your name, email address, or any other personal identifier.</li>
+    <li>Your Instagram username, profile data, or account information.</li>
+    <li>Your browsing history, including which Instagram posts you viewed
+        (only posts you actively dislike are recorded).</li>
+    <li>Location data or device identifiers.</li>
+    <li>Cookies from Instagram or any other website.</li>
+    <li>Any information from your Google account (the UUID sync is handled
+        entirely by Chrome's built-in sync, without our involvement).</li>
+  </ul>
+
+  <!-- 4 -->
+  <h2 id="how-we-use">4. How We Use Your Information</h2>
+  <p>The data described in §2 is used exclusively for the following purposes:</p>
+  <ul>
+    <li>
+      <strong>Dislike counting:</strong> Incrementing and serving the aggregate
+      dislike count for a given post when users request it.
+    </li>
+    <li>
+      <strong>Duplicate-vote prevention:</strong> Ensuring each UUID can cast
+      at most one dislike per post (enforced at the database level).
+    </li>
+    <li>
+      <strong>Rate limiting:</strong> Preventing automated abuse by capping the
+      number of votes per UUID and per IP hash over a rolling time window.
+    </li>
+  </ul>
+  <p>
+    We do <strong>not</strong> use your data for advertising, profiling,
+    machine learning, or any purpose beyond the above.
+  </p>
+
+  <!-- 5 -->
+  <h2 id="storage">5. Data Storage &amp; Security</h2>
+
+  <h3>5.1 Where data is stored</h3>
+  <ul>
+    <li>
+      <strong>Browser (client-side):</strong> Your UUID is stored in
+      <code>chrome.storage.sync</code> and in <code>chrome.storage.local</code>
+      (a cache of posts you've voted on, for instant UI feedback).
+      Both storages are local to your browser and governed by Google Chrome's
+      security model.
+    </li>
+    <li>
+      <strong>Backend database:</strong> Vote records (UUID + post code +
+      timestamp + IP hash) are stored in a PostgreSQL database hosted on a
+      cloud provider (currently Supabase/Railway). Only the minimum fields
+      listed in §2.2 are stored; no other data is persisted.
+    </li>
+  </ul>
+
+  <h3>5.2 Security measures</h3>
+  <ul>
+    <li>All communication between the Extension and our backend uses HTTPS/TLS.</li>
+    <li>The database is not publicly accessible and requires authenticated access.</li>
+    <li>IP addresses are hashed before database insertion; plain-text IPs never
+        leave the server process.</li>
+    <li>Secrets (database credentials, API keys) are managed via environment
+        variables and are never embedded in the Extension code.</li>
+  </ul>
+
+  <h3>5.3 Data retention</h3>
+  <p>
+    Vote records are retained indefinitely to maintain accurate historical
+    dislike counts. Records associated with a deleted UUID are removed
+    immediately upon a deletion request (see §6).
+  </p>
+
+  <!-- 6 -->
+  <h2 id="your-rights">6. Your Rights &amp; Choices</h2>
+
+  <h3>6.1 Access</h3>
+  <p>
+    You can view your anonymous UUID at any time by opening the Extension popup
+    and looking at the "Your anonymous token" field.
+  </p>
+
+  <h3>6.2 Deletion</h3>
+  <p>
+    You have the right to delete all data associated with your UUID at any time:
+  </p>
+  <ol>
+    <li>Open the Extension popup by clicking its icon in the Chrome toolbar.</li>
+    <li>Click the <strong>"🗑️ Reset data"</strong> button.</li>
+    <li>Confirm the action in the dialog that appears.</li>
+  </ol>
+  <p>
+    This action permanently deletes all vote records linked to your UUID from
+    our database and generates a new random UUID in your browser. This operation
+    is <strong>irreversible</strong>.
+  </p>
+  <p>
+    Alternatively, you may request deletion by contacting us at
+    <a href="mailto:merriban.tech@gmail.com">merriban.tech@gmail.com</a> with the subject
+    "Data deletion request." Please include your UUID (visible in the popup)
+    so we can locate your records. We will process deletion requests within
+    30 days.
+  </p>
+
+  <h3>6.3 Uninstalling the Extension</h3>
+  <p>
+    Uninstalling the Extension removes all locally stored data (UUID,
+    voted-posts cache) from your browser. Vote records already submitted to
+    our backend are not automatically removed on uninstall; use the
+    Reset data button before uninstalling if you wish to remove them.
+  </p>
+
+  <!-- 7 -->
+  <h2 id="third-parties">7. Third-Party Services</h2>
+  <p>
+    We use the following third-party infrastructure providers. These services
+    process data only as necessary to operate our backend:
+  </p>
+  <ul>
+    <li>
+      <strong>Supabase / PostgreSQL</strong> — database hosting. Data is stored
+      within their infrastructure under their
+      <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>.
+    </li>
+    <li>
+      <strong>Railway</strong> — backend application hosting. Their
+      <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener">privacy policy</a>
+      applies to traffic passing through their platform.
+    </li>
+  </ul>
+  <p>
+    We do <strong>not</strong> use advertising networks, analytics services
+    (e.g., Google Analytics), social-media pixels, or any other tracking
+    technology. No data is sold or shared with third parties for commercial purposes.
+  </p>
+  <p>
+    The Extension communicates only with our own backend
+    (<code>ig-dislike.onrender.com</code>) and with Instagram's website
+    (for page injection). It does not make requests to any other third-party
+    server.
+  </p>
+
+  <!-- 8 -->
+  <h2 id="children">8. Children's Privacy</h2>
+  <p>
+    The Extension is not directed at children under the age of 13. We do not
+    knowingly collect any information from children. If you believe a child has
+    provided us with data, please contact us and we will delete it promptly.
+  </p>
+
+  <!-- 9 -->
+  <h2 id="changes">9. Changes to This Policy</h2>
+  <p>
+    We may update this Privacy Policy from time to time. When we do, we will
+    update the "Last updated" date at the top of this page. If we make
+    material changes, we will note them prominently on this page for at least
+    30 days. Continued use of the Extension after changes become effective
+    constitutes acceptance of the updated policy.
+  </p>
+
+  <!-- 10 -->
+  <h2 id="contact">10. Contact Us</h2>
+  <p>
+    If you have questions, concerns, or requests regarding this Privacy Policy
+    or your data, please contact us at:
+  </p>
+  <p>
+    📧 <a href="mailto:merriban.tech@gmail.com"><strong>merriban.tech@gmail.com</strong></a>
+  </p>
+  <p>
+    We aim to respond to all privacy-related inquiries within 5 business days.
+  </p>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Dislike Button for IG logo" width="64" height="64">
+      Dislike Button for IG
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:merriban.tech@gmail.com">Contact</a>
+    </nav>
+    <div class="footer-disclaimer">
+      ⚠️ Not affiliated with, endorsed by, or sponsored by Meta Platforms, Inc. or Instagram.
+      Instagram® is a trademark of Meta Platforms, Inc.
+      &nbsp;·&nbsp; © 2026 Dislike Button for IG
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
