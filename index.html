@@ -359,22 +359,32 @@
       font-size: 12px;
     }
 
-    /* ── Firefox AMO badge ───────────────────────────────────────────────── */
-    .btn-amo {
+    /* ── Firefox button ─────────────────────────────────────────────────── */
+    .btn-firefox {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
+      background: #FF7139;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 11px 22px;
+      border-radius: 50px;
       text-decoration: none;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: opacity .15s, transform .15s;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      box-shadow: 0 4px 16px rgba(255,113,57,.30);
+      transition: background .15s, transform .15s, box-shadow .15s;
+      white-space: nowrap;
     }
-    .btn-amo:hover {
-      opacity: .9;
+    .btn-firefox:hover {
+      background: #e85e2a;
       transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,113,57,.40);
       text-decoration: none;
     }
-    .btn-amo img { display: block; height: 58px; width: auto; }
+    .btn-firefox:active { transform: translateY(0); }
+    .btn-firefox-lg { font-size: 18px; padding: 16px 36px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    @media (max-width: 500px) { .nav-actions .btn-firefox { display: none; } }
 
     /* ── Responsive tweaks ───────────────────────────────────────────────── */
     @media (max-width: 500px) {
@@ -393,9 +403,15 @@
       <img src="logo.png" alt="Dislike Button for IG logo" width="64" height="64">
       Dislike Button <span class="dot">for IG</span>
     </a>
-    <a href="CHROME_STORE_URL" class="btn-cta" target="_blank" rel="noopener">
-      ➕ Add to Chrome
-    </a>
+    <div class="nav-actions">
+      <a href="CHROME_STORE_URL" class="btn-cta" target="_blank" rel="noopener">
+        ➕ Add to Chrome
+      </a>
+      <a href="https://addons.mozilla.org/it/firefox/addon/dislike-button-for-ig"
+         class="btn-firefox" target="_blank" rel="noopener">
+        🦊 Add to Firefox
+      </a>
+    </div>
   </nav>
 </header>
 
@@ -413,9 +429,8 @@
         ➕ Add to Chrome · It's Free
       </a>
       <a href="https://addons.mozilla.org/it/firefox/addon/dislike-button-for-ig"
-         class="btn-amo" target="_blank" rel="noopener">
-        <img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png"
-             alt="Get the Add-on for Firefox" height="58">
+         class="btn-firefox btn-firefox-lg" target="_blank" rel="noopener">
+        🦊 Add to Firefox · It's Free
       </a>
     </div>
     <p class="hero-note">Chrome Web Store &nbsp;·&nbsp; Firefox Add-ons &nbsp;·&nbsp; No login required &nbsp;·&nbsp; Free to use</p>
