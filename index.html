@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dislike Button for IG: The dislike counter Instagram never gave you</title>
-  <meta name="description" content="Add a public, shared dislike counter to every Instagram post. Free Chrome extension. Anonymous, no login required.">
+  <meta name="description" content="Add a public, shared dislike counter to every Instagram post. Free Chrome &amp; Firefox extension. Anonymous, no login required.">
   <!-- Open Graph -->
   <meta property="og:title"       content="Dislike Button for IG">
   <meta property="og:description" content="Add a public dislike counter to Instagram posts. Anonymous, no login.">
@@ -359,6 +359,23 @@
       font-size: 12px;
     }
 
+    /* ── Firefox AMO badge ───────────────────────────────────────────────── */
+    .btn-amo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: opacity .15s, transform .15s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .btn-amo:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .btn-amo img { display: block; height: 58px; width: auto; }
+
     /* ── Responsive tweaks ───────────────────────────────────────────────── */
     @media (max-width: 500px) {
       .section { padding: 60px 0; }
@@ -388,21 +405,20 @@
     <img class="hero-logo" src="logo.png" alt="Dislike Button for IG logo" width="128" height="128">
     <h1>The dislike counter<br><span>Instagram never gave you</span></h1>
     <p>
-      A free Chrome extension that adds a shared, public dislike counter
+      A free extension for Chrome and Firefox that adds a shared, public dislike counter
       to every Instagram post. No account, no personal data, just honest feedback.
     </p>
     <div class="hero-actions">
       <a href="CHROME_STORE_URL" class="btn-cta btn-cta-lg" target="_blank" rel="noopener">
         ➕ Add to Chrome · It's Free
       </a>
-      <!-- GitHub Sponsors: attivare quando disponibile
-      <a href="https://github.com/GITHUB_SPONSORS_URL" class="btn-outline"
-         target="_blank" rel="noopener">
-        ★ View on GitHub
+      <a href="https://addons.mozilla.org/it/firefox/addon/dislike-button-for-ig"
+         class="btn-amo" target="_blank" rel="noopener">
+        <img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png"
+             alt="Get the Add-on for Firefox" height="58">
       </a>
-      -->
     </div>
-    <p class="hero-note">Chrome Web Store &nbsp;·&nbsp; No login required &nbsp;·&nbsp; Free to use</p>
+    <p class="hero-note">Chrome Web Store &nbsp;·&nbsp; Firefox Add-ons &nbsp;·&nbsp; No login required &nbsp;·&nbsp; Free to use</p>
   </div>
 </section>
 
@@ -418,7 +434,7 @@
         <div class="step-num">1</div>
         <span class="step-icon">📦</span>
         <h3>Install the extension</h3>
-        <p>Add <em>Dislike Button for IG</em> to Chrome from the Web Store in one click. No account or sign-in needed.</p>
+        <p>Add <em>Dislike Button for IG</em> to Chrome or Firefox in one click. No account or sign-in needed.</p>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
